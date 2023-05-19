@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "搜索",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "merchant-box": "../../components/merchant-box/merchant-box"
+  }
+}

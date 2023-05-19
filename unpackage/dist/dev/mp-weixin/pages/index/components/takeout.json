@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "merchant-box": "../../../components/merchant-box/merchant-box"
+  }
+}

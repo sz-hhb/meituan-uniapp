@@ -1,0 +1,1 @@
+<page-meta page-style="{{a}}"></page-meta><view class="home-page"><search u-i="60e7b9f3-0" bind:__l="__l"></search><preference u-i="60e7b9f3-1" bind:__l="__l"></preference><title u-i="60e7b9f3-2" bind:__l="__l"></title><delicacy bindchangePageOverflow="{{b}}" u-i="60e7b9f3-3" bind:__l="__l"></delicacy><takeout u-i="60e7b9f3-4" bind:__l="__l"></takeout></view>

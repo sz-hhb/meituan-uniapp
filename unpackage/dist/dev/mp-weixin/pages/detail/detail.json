@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "下单",
+  "navigationBarBackgroundColor": "#feca00",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "merchant-info": "./components/merchant-intro",
+    "tabs": "./components/tabs",
+    "ordering": "./components/ordering",
+    "comment": "./components/comment",
+    "introduce": "./components/introduce"
+  }
+}

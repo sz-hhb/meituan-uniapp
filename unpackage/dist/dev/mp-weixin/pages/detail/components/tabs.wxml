@@ -1,0 +1,1 @@
+<view class="tab-content"><view wx:for="{{a}}" wx:for-item="item" wx:key="b" class="{{['tab-item', item.c && 'active-class']}}" bindtap="{{item.d}}">{{item.a}}</view></view>

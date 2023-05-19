@@ -1,0 +1,1 @@
+<view class="merchant-intro"><view class="merchant-img"><image class="image" src="{{a}}"></image></view><view class="title"><view class="name">{{b}}</view><view class="duration">配送约{{c}}分钟</view></view></view>
