@@ -22,7 +22,9 @@
 	} from "@dcloudio/uni-app"
 	import {
 		ref,
-		computed
+		computed,
+		onMounted,
+		getCurrentInstance
 	} from "vue"
 	import {
 		useDetailStore

@@ -1,5 +1,5 @@
 <template>
-	<view class="ordering-content">
+	<view class="ordering-content" :style="{height: orderContentHeight + 'px'}">
 		<view class="type-menu">
 			<scroll-view class="type-menu-scroll-view" scroll-y="true">
 				<view v-for="(item, index) in menuList" :key="index" class="menu-item">
@@ -56,9 +56,33 @@
 
 <script setup>
 	import {
+		onReady
+	} from "@dcloudio/uni-app"
+	import {
 		ref,
-		computed
+		computed,
+		onMounted,
+		getCurrentInstance
 	} from "vue"
+
+	const windowHeight = ref(0)
+	const orderContentHeight = ref(0)
+
+	onReady(() => {
+		uni.getSystemInfo({
+			success: function(res) {
+				windowHeight.value = res.windowHeight
+			}
+		});
+	})
+
+	onMounted(() => {
+		const instance = getCurrentInstance()
+		const query = uni.createSelectorQuery().in(instance)
+		query.select(".ordering-content").boundingClientRect(data => {
+			orderContentHeight.value = windowHeight.value - data.top
+		}).exec();
+	})
 
 	const emits = defineEmits(["increment-count", "decrement-count"])
 	const props = defineProps({
@@ -82,7 +106,7 @@
 		name: "小炒"
 	}])
 	const totalVal = computed(() => {
-		if (!Object.keys(props.wxshopDetailInfo).length) return
+		if (!Object.keys(props.wxshopDetailInfo).length) return 0
 		let total = 0
 		props.wxshopDetailInfo.forEach((item) => {
 			total += item.count * item.objdis.Discount
@@ -99,7 +123,6 @@
 
 	const increment = (item) => {
 		emits("increment-count", item._id)
-
 	}
 
 	const decrement = (item) => {

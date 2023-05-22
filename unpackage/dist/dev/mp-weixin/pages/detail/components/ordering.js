@@ -16,6 +16,22 @@ const _sfc_main = {
   emits: ["increment-count", "decrement-count"],
   setup(__props, { emit: emits }) {
     const props = __props;
+    const windowHeight = common_vendor.ref(0);
+    const orderContentHeight = common_vendor.ref(0);
+    common_vendor.onReady(() => {
+      common_vendor.index.getSystemInfo({
+        success: function(res) {
+          windowHeight.value = res.windowHeight;
+        }
+      });
+    });
+    common_vendor.onMounted(() => {
+      const instance = common_vendor.getCurrentInstance();
+      const query = common_vendor.index.createSelectorQuery().in(instance);
+      query.select(".ordering-content").boundingClientRect((data) => {
+        orderContentHeight.value = windowHeight.value - data.top;
+      }).exec();
+    });
     const menuList = common_vendor.ref([{
       name: "盖浇饭"
     }, {
@@ -27,7 +43,7 @@ const _sfc_main = {
     }]);
     const totalVal = common_vendor.computed(() => {
       if (!Object.keys(props.wxshopDetailInfo).length)
-        return;
+        return 0;
       let total = 0;
       props.wxshopDetailInfo.forEach((item) => {
         total += item.count * item.objdis.Discount;
@@ -91,7 +107,8 @@ const _sfc_main = {
       }, common_vendor.unref(totalVal) < __props.shopInfo.delivering ? {
         i: common_vendor.t(__props.shopInfo.delivering)
       } : {}, {
-        j: common_vendor.o(confirm)
+        j: common_vendor.o(confirm),
+        k: orderContentHeight.value + "px"
       });
     };
   }
