@@ -7883,6 +7883,7 @@ const createHook = (lifecycle) => (hook, target = getCurrentInstance()) => {
   !isInSSRComponentSetup && injectHook(lifecycle, hook, target);
 };
 const onLoad = /* @__PURE__ */ createHook(ON_LOAD);
+const onReady = /* @__PURE__ */ createHook(ON_READY);
 const pages = [
   {
     path: "pages/index/index",
@@ -10478,11 +10479,14 @@ exports.createSSRApp = createSSRApp;
 exports.defineStore = defineStore;
 exports.e = e;
 exports.f = f$1;
+exports.getCurrentInstance = getCurrentInstance;
 exports.index = index;
 exports.initVueI18n = initVueI18n;
 exports.n = n$1;
 exports.o = o$1;
 exports.onLoad = onLoad;
+exports.onMounted = onMounted;
+exports.onReady = onReady;
 exports.p = p$1;
 exports.ref = ref;
 exports.resolveComponent = resolveComponent;
